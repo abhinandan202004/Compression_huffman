@@ -153,9 +153,9 @@ public void decompressImage(String compressedPath, String outputPath) throws IOE
 
     public static void main(String[] args) {
         HuffmanImageCompressor compressor = new HuffmanImageCompressor();
-        String inputPath = "input_image.png";
-        String compressedPath = "compressed_image.huff";
-        String outputPath = "output_image.png";
+        String inputPath = "animal_img.png";
+        String compressedPath = "compressed1_image.huff";
+        String outputPath = "out2_image.png";
 
         try {
             compressor.compressImage(inputPath, compressedPath);
