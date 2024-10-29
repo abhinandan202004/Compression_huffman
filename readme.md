@@ -59,13 +59,13 @@ For an example grayscale image `input_image.png`, the command generates:
 Here’s an example of the image compression and decompression process:
 
 ### Original Image (Input)
-<img src="animal_img.png" alt="Input Image" width="300">
+<img src="Huffman Img Compression/animal_img.png" alt="Input Image" width="300">
 
 ### Compressed Image File
 `compressed_image.huff` (binary file, not viewable as an image)
 
 ### Decompressed Image (Output)
-<img src="out2_image.png" alt="Output Image" width="300">
+<img src="Huffman Img Compression/out2_image.png" alt="Output Image" width="300">
 
 The output image should resemble the input image closely, as Huffman encoding is a lossless compression method.
 
