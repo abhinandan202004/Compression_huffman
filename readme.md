@@ -1,4 +1,3 @@
-
 # Huffman Image Compressor
 
 This project implements a simple image compression and decompression tool using **Huffman Encoding**. This method applies a lossless compression algorithm to reduce the file size of grayscale images. It encodes pixel values based on their frequency and creates a compressed binary file format.
@@ -29,6 +28,7 @@ This project implements a simple image compression and decompression tool using 
 ## Usage
 
 ### 1. Compile the Program
+
 In the terminal, navigate to the project directory and compile the code:
 
 ```bash
@@ -51,6 +51,7 @@ java HuffmanImageCompressor
 ## Example
 
 For an example grayscale image `input_image.png`, the command generates:
+
 - **compressed_image.huff**: Compressed binary file
 - **output_image.png**: Reconstructed image from compressed data
 
@@ -59,13 +60,16 @@ For an example grayscale image `input_image.png`, the command generates:
 Here’s an example of the image compression and decompression process:
 
 ### Original Image (Input)
+
 <img src="animal_img.png" alt="Input Image" width="300">
 
 ### Compressed Image File
+
 `compressed_image.huff` (binary file, not viewable as an image)
 
 ### Decompressed Image (Output)
-<img src="out2_image.png" alt="Output Image" width="300">
+
+<img src="compression/Huffman Img Compression/out2_image.png" alt="Output Image" width="300">
 
 The output image should resemble the input image closely, as Huffman encoding is a lossless compression method.
 
@@ -80,6 +84,4 @@ Huffman encoding may not always yield a smaller file size for high-entropy image
 
 ## License
 
-This project is licensed under the MIT License 
-
-
+This project is licensed under the MIT License
