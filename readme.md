@@ -1,59 +1,107 @@
-# Huffman Image Compressor
 
-This project implements a simple image compression and decompression tool using **Huffman Encoding**. This method applies a lossless compression algorithm to reduce the file size of grayscale images. It encodes pixel values based on their frequency and creates a compressed binary file format.
+---
+
+# Huffman Encoding Compressor
+
+This project repository contains two applications built in Java using Huffman encoding for compression:
+1. **Image Compressor**: Compresses images using Huffman encoding.
+2. **Text File Compressor**: Compresses text files using Huffman encoding.
+
+## Table of Contents
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Setup and Installation](#setup-and-installation)
+- [Usage](#usage)
+  - [Image Compressor](#image-compressor)
+  - [Text File Compressor](#text-file-compressor)
+- [Images and Examples](#images-and-examples)
+- [Technical Details](#technical-details)
+
+---
+
+## Project Overview
+
+Huffman encoding is a lossless data compression algorithm commonly used for reducing the size of data files. These two Java programs utilize Huffman encoding to:
+- Compress and decompress images
+- Compress and decompress text files
+
+Each application encodes data, saving it in a compressed format, and can decode the compressed data back to its original format.
+
+---
 
 ## Features
 
-- **Compress Grayscale Images**: Converts an image to grayscale and compresses it using Huffman encoding.
-- **Decompress Compressed Images**: Restores the compressed image file back to its original form.
-- **Lossless Compression**: Ensures that no image data is lost during compression and decompression.
+- **Lossless Compression**: Both compressors ensure data is not lost during compression and decompression.
+- **Binary Encoding**: Uses binary encoding to minimize the space required for data storage.
+- **Customizable Paths**: Allows users to specify input and output file paths.
 
-## How It Works
+---
 
-1. **Huffman Tree Construction**: The program calculates pixel frequency in the grayscale image and constructs a Huffman tree.
-2. **Binary Encoding**: Each pixel value is replaced by a variable-length code based on frequency (more frequent pixels get shorter codes).
-3. **File Saving**: Encoded data, Huffman tree, and image dimensions are saved to a compressed `.huff` file.
-4. **Decompression**: The `.huff` file is read to rebuild the image using the Huffman codes.
+## Setup and Installation
 
-## Requirements
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/your-repo-url.git
+   cd your-repo-url
+   ```
 
-- **Java Development Kit (JDK)** 17 or later
-- **Java I/O Libraries** and **javax.imageio** for handling image file operations
+2. **Compile the Java Files**:
+   ```bash
+   javac HuffmanImageCompressor.java
+   javac HuffmanTextCompressor.java
+   ```
 
-## Installation
+3. **Dependencies**: This project requires only Java 8+ (no external dependencies).
 
-1. Clone or download this repository.
-2. Ensure you have the JDK installed and set up.
+---
 
 ## Usage
 
-### 1. Compile the Program
+### Image Compressor
 
-In the terminal, navigate to the project directory and compile the code:
+1. **Compress an Image**:
+   ```bash
+   java HuffmanImageCompressor compress <input_image_path> <compressed_output_path>
+   ```
 
-```bash
-javac HuffmanImageCompressor.java
-```
+   Example:
+   ```bash
+   java HuffmanImageCompressor compress sample.jpg compressed_image.huff
+   ```
 
-### 2. Run the Compressor and Decompressor
+2. **Decompress an Image**:
+   ```bash
+   java HuffmanImageCompressor decompress <compressed_file_path> <decompressed_image_path>
+   ```
 
-Run the program, specifying the paths for input and output files within the code, or modify them as needed.
+   Example:
+   ```bash
+   java HuffmanImageCompressor decompress compressed_image.huff decompressed_image.jpg
+   ```
 
-```bash
-java HuffmanImageCompressor
-```
+### Text File Compressor
 
-### 3. Check Output
+1. **Compress a Text File**:
+   ```bash
+   java HuffmanTextCompressor compress <input_text_file> <compressed_output_file>
+   ```
 
-- The program saves the compressed file as `compressed_image.huff`.
-- Decompressed output will be saved as `output_image.png`, mirroring the original `input_image.png`.
+   Example:
+   ```bash
+   java HuffmanTextCompressor compress input.txt compressed.huff
+   ```
 
-## Example
+2. **Decompress a Text File**:
+   ```bash
+   java HuffmanTextCompressor decompress <compressed_file_path> <output_text_file>
+   ```
 
-For an example grayscale image `input_image.png`, the command generates:
+   Example:
+   ```bash
+   java HuffmanTextCompressor decompress compressed.huff output.txt
+   ```
 
-- **compressed_image.huff**: Compressed binary file
-- **output_image.png**: Reconstructed image from compressed data
+---
 
 ## Images
 
@@ -71,15 +119,36 @@ Here’s an example of the image compression and decompression process:
 
 The output image should resemble the input image closely, as Huffman encoding is a lossless compression method.
 
-## Limitations
+### Image Compressor
+- **Input**: Original image file (e.g., `sample.jpg`)
+- **Compressed Output**: Binary file `compressed_image.huff`
+- **Decompressed Output**: Reconstructed image file (e.g., `decompressed_image.jpg`)
 
-Huffman encoding may not always yield a smaller file size for high-entropy images or images with a large variety of pixel values. For complex images, the storage required for Huffman tree metadata may offset the compression gains. This project demonstrates Huffman coding as a learning exercise and may not outperform image-specific algorithms like PNG compression.
+### Text File Compressor
+- **Input**: Original text file (e.g., `input.txt`)
+- **Compressed Output**: Binary file `compressed.huff`
+- **Decompressed Output**: Reconstructed text file (e.g., `output.txt`)
 
-## Troubleshooting
 
-- **EOFException**: Ensure data is read in the correct order during decompression.
-- **Large File Sizes**: Huffman encoding alone may not be efficient for all types of images; try simpler images for better results.
+---
 
-## License
+## Technical Details
 
-This project is licensed under the MIT License
+### Image Compressor
+- **Huffman Tree Construction**: The compressor calculates pixel frequency and builds a Huffman tree to assign binary codes to each unique pixel value.
+- **Binary Encoding**: Encodes the pixel data into binary format and saves it in a compressed file.
+
+### Text File Compressor
+- **Character Frequency Analysis**: Reads the file and counts the frequency of each character to build a Huffman tree.
+- **Binary Compression**: Encodes text data, saving it in a compressed binary format that’s stored in the output file.
+
+---
+
+## Error Handling
+
+- **File Not Found**: If input files are missing, the program outputs a descriptive error.
+- **Unsupported Format**: Currently, the image compressor only supports raw image formats. (JPEGs and PNGs may not yield high compression results.)
+
+---
+
+Feel free to reach out if you encounter any issues or need help expanding the project!
